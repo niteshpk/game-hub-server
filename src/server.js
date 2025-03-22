@@ -3,6 +3,8 @@ import { createClient } from "redis";
 import dotenv from "dotenv";
 import setupRedisRoutes from "./routes/redisRoutes.js";
 import setupGamesRoutes from "./routes/gamesRoutes.js";
+import setupGenresRoutes from "./routes/genresRoutes.js";
+import setupPlatformsRoutes from "./routes/platformsRoutes.js";
 import healthRoutes from "./routes/healthRoutes.js";
 import cors from "cors";
 
@@ -45,6 +47,12 @@ app.use(setupRedisRoutes(client));
 
 // Use Games API routes
 app.use(setupGamesRoutes(client));
+
+// Use Genres API routes
+app.use(setupGenresRoutes(client));
+
+// Use Genres API routes
+app.use(setupPlatformsRoutes(client));
 
 // Health check route
 app.use("/api/v1", healthRoutes);

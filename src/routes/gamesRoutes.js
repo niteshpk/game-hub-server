@@ -18,7 +18,6 @@ export default function setupGamesRoutes(client) {
       // Check if data exists in Redis
       const cachedData = await client.get(cacheKey);
       if (cachedData) {
-        console.log("✅ Serving from Redis Cache");
         return res.json(JSON.parse(cachedData));
       }
 
@@ -49,7 +48,6 @@ export default function setupGamesRoutes(client) {
       // Check Redis for cached data
       const cachedData = await client.get(cacheKey);
       if (cachedData) {
-        console.log("✅ Serving from Redis Cache");
         return res.json(JSON.parse(cachedData));
       }
 
@@ -81,7 +79,6 @@ export default function setupGamesRoutes(client) {
       // Check Redis for cached data
       const cachedData = await client.get(cacheKey);
       if (cachedData) {
-        console.log("✅ Serving from Redis Cache");
         return res.json(JSON.parse(cachedData));
       }
 
@@ -113,7 +110,6 @@ export default function setupGamesRoutes(client) {
       // Check Redis for cached data
       const cachedData = await client.get(cacheKey);
       if (cachedData) {
-        console.log("✅ Serving from Redis Cache");
         return res.json(JSON.parse(cachedData));
       }
 
