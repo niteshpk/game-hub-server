@@ -3,6 +3,7 @@ import { createClient } from "redis";
 import dotenv from "dotenv";
 import setupRedisRoutes from "./routes/redisRoutes.js";
 import setupGamesRoutes from "./routes/gamesRoutes.js";
+import healthRoutes from "./routes/healthRoutes.js";
 
 dotenv.config(); // Load environment variables
 
@@ -36,6 +37,9 @@ app.use(setupRedisRoutes(client));
 
 // Use Games API routes
 app.use(setupGamesRoutes(client));
+
+// Health check route
+app.use("/api/v1", healthRoutes);
 
 // Start Server
 const PORT = process.env.PORT || DEFAULT_PORT;
