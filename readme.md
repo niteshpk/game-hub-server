@@ -32,12 +32,21 @@ game-hub-server/
 │   │   ├── redis.ts
 │   │   └── routes.ts
 │   ├── routes/
-│   │   └── gameRoutes.ts
+│   │   ├── gamesRoutes.ts
+│   │   ├── genresRoutes.ts
+│   │   ├── platformsRoutes.ts
+│   │   ├── redisRoutes.ts
+│   │   ├── healthRoutes.ts
+│   │   └── index.ts
 │   ├── services/
-│   │   └── gameService.ts
+│   │   ├── rawgApiService.ts
 │   ├── middlewares/
-│   │   ├── errorHandler.ts
-│   │   └── requestLogger.ts
+│   │   ├── common.ts
+│   │   ├── compression.ts
+│   │   ├── index.ts
+│   │   ├── performance.ts
+│   │   ├── sanitization.ts
+│   │   ├── security.ts
 │   ├── types/
 │   │   └── index.ts
 │   └── server.ts
@@ -61,7 +70,7 @@ game-hub-server/
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/niteshpk/game-hub-server
    cd game-hub-server
    ```
 
@@ -159,16 +168,20 @@ game-hub-server/
 
 ## API Endpoints
 
-- `GET /api/games/search?query=<search_term>`: Search for games
-- `GET /api/games/:id`: Get detailed information about a specific game
+- `GET /api/v1/games/search?query=<search_term>`: Search for games
+- `GET /api/v1/games/:id`: Get detailed information about a specific game
+- `GET /api/v1/genres`: Get all genres
+- `GET /api/v1/:slug/movies`: Get all movies for a specific game
+- `GET /api/v1/:slug/screenshots`: Get all screenshots for a specific game
+- `GET /api/v1/platforms`: Get all platforms
+- `GET /api/v1/health`: Get health status
 
 ## Development
 
 - Build TypeScript: `npm run build`
-- Run tests: `npm test`
-- Run with nodemon for development: `npm run dev`
+- Run for production: `npm run start`
+- Run for development: `npm run dev`
 - Lint code: `npm run lint`
-- Watch for changes: `npm run watch`
 
 ## Environment Variables
 
