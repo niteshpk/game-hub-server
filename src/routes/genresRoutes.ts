@@ -26,7 +26,7 @@ export default function setupGenresRoutes(client: RedisClientType): Router {
       // Fetch from API if not in cache
       const genres = await genresClient.getAll();
 
-      // Store in Redis (cache for 1 hour)
+      // Store in Redis 1 hour)
       await client.setEx(
         cacheKey,
         Number(process.env.REDIS_CACHE_EXPIRATION) || REDIS_CACHE_EXPIRATION,

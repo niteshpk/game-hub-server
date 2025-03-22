@@ -72,5 +72,25 @@ export default function setupRedisRoutes(client: RedisClientType): Router {
     }
   });
 
+  // API to Delete All Keys
+  router.delete(
+    `${BASE_URL}/delete-all-keys`,
+    async (_req: Request, res: Response) => {
+      try {
+        const keys = await client.keys("*");
+        if (keys.length === 0) {
+          res.json({ message: "No keys found in Redis" });
+          return;
+        }
+        await client.del(keys);
+        res.json({
+          message: `Successfully deleted ${keys.length} keys from Redis`,
+        });
+      } catch (error) {
+        res.status(500).json({ error: "Error deleting all keys from Redis" });
+      }
+    }
+  );
+
   return router;
 }

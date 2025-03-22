@@ -4,7 +4,7 @@ import setupRedisRoutes from "../routes/redisRoutes.js";
 import { setupGamesRoutes } from "../routes/gamesRoutes.js";
 import setupGenresRoutes from "../routes/genresRoutes.js";
 import setupPlatformsRoutes from "../routes/platformsRoutes.js";
-import healthRoutes from "../routes/healthRoutes.js";
+import setupHealthRoutes from "../routes/healthRoutes.js";
 
 const setupRoutes = (app: Application, redisClient: RedisClientType): void => {
   // Base route
@@ -17,7 +17,7 @@ const setupRoutes = (app: Application, redisClient: RedisClientType): void => {
   app.use(setupGamesRoutes(redisClient));
   app.use(setupGenresRoutes(redisClient));
   app.use(setupPlatformsRoutes(redisClient));
-  app.use("/api/v1", healthRoutes);
+  app.use(setupHealthRoutes());
 };
 
 export default setupRoutes;
