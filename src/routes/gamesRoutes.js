@@ -8,7 +8,7 @@ export default function setupGamesRoutes(client) {
 
   const BASE_URL = "/api/v1/games";
 
-  const REDIS_CACHE_EXPIRATION = 604800; //(7 days = 7 * 24 * 60 * 60 = 604800 seconds)
+  const REDIS_CACHE_EXPIRATION = 2592000; // 30 days
 
   // Get All Games (with Redis caching)
   router.get(`${BASE_URL}`, async (req, res) => {

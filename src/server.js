@@ -4,13 +4,16 @@ import dotenv from "dotenv";
 import setupRedisRoutes from "./routes/redisRoutes.js";
 import setupGamesRoutes from "./routes/gamesRoutes.js";
 import healthRoutes from "./routes/healthRoutes.js";
+import cors from "cors";
 
 dotenv.config(); // Load environment variables
+
+const DEFAULT_PORT = 5000;
 
 const app = express();
 app.use(express.json()); // Middleware to parse JSON requests
 
-const DEFAULT_PORT = 5000;
+app.use(cors()); // Enable CORS for all origins
 
 // Create Redis Client
 const client = createClient({
@@ -31,6 +34,11 @@ client.on("error", (err) => console.error("❌ Redis Error:", err));
   console.log("Connecting to the Redis server...");
   await client.connect();
 })();
+
+// Routes
+app.get("/", (req, res) => {
+  res.send("Something is working!");
+});
 
 // Use Redis API routes
 app.use(setupRedisRoutes(client));
