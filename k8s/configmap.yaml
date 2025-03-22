@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: game-hub-config
+data:
+  NODE_ENV: "production"
+  PORT: "5001"
+  REDIS_HOST: "game-hub-redis"
+  REDIS_PORT: "6379"
+  REDIS_CACHE_EXPIRATION: "86400"
